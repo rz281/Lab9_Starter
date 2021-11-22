@@ -102,6 +102,90 @@
 
     // Start your code here
     // You may move this JS to another file if you wish
+    errorBtns[0].addEventListener('click', function() {
+      console.log("l o g g e d ")
+    })
+
+    errorBtns[1].addEventListener('click', function() {
+      console.error("that is a no no")
+    })
+
+    errorBtns[2].addEventListener('click', function() {
+      console.count("how many IQ points do you have");
+    });
+
+    errorBtns[3].addEventListener('click', function() {
+      console.warn("Brother it is week 9 what are you doing");
+    });
+
+    errorBtns[4].addEventListener('click', function() {
+      let X = 2;
+      let Y = 2;
+      let assertMsg = 'No inequality';
+      console.assert(X > Y, {X, Y, assertMsg});
+    });
+
+    errorBtns[5].addEventListener('click', function() {
+      console.clear();
+    });
+
+    errorBtns[6].addEventListener('click', function() {
+      console.dir(errorBtns[6]);
+    });
+
+    errorBtns[7].addEventListener('click', function() {
+      console.dirxml(errorBtns[7]);
+    });
+
+    const label = "Some label to use";
+
+    errorBtns[8].addEventListener('click', function() {
+      console.group(label);
+    });
+
+    errorBtns[9].addEventListener('click', function() {
+      console.groupEnd(label);
+    });
+
+    errorBtns[10].addEventListener('click', function() {
+      console.table([
+      {
+        first: 'Lebronathan',
+        last: 'Jahmes',
+      },
+      {
+        first: 'Antonio',
+        last: 'Davith',
+        birthday: '0123456',
+      },
+      {
+        first: 'Brussell',
+        last: 'Eastbrick',
+      }
+      ]);
+    });
+
+    errorBtns[11].addEventListener('click', function() {
+      console.time("POV: You're watching the UCSD CS academic integrity videos");
+    });
+
+    errorBtns[12].addEventListener('click', function() {
+      console.timeEnd("POV: You're watching the UCSD CS academic integrity videos");
+    });
+
+    errorBtns[13].addEventListener('click', function() {
+      const first = () => { second(); };
+      const second = () => { third(); };
+      const third = () => { fourth(); };
+      const fourth = () => { console.trace(); };
+      first();
+    });
+
+    errorBtns[14].addEventListener('click', function() {
+      const notouch = "no touchy";
+      notouch = "you touchy";
+      
+    });
   </script>
 </body>
 
