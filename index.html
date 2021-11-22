@@ -86,8 +86,22 @@
       <button>Trigger a Global Error</button>
     </section>
   </main>
-
+  <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
   <script>
+    window.TrackJS && TrackJS.install({ 
+      token: "cefb01db0eb74aa88f8d87d286590031"
+      // for more configuration options, see https://docs.trackjs.com
+    });
+  </script>
+                        
+  <script>
+
+    class FirstEntryError extends Error {
+      constructor(message) {
+        super(message); // (1)
+        this.name = "FirstEntryError"; // (2)
+      }
+    }
     let form = document.querySelector('form');
     form.addEventListener('submit', e => {
       e.preventDefault();
@@ -95,13 +109,40 @@
       let firstNum = document.querySelector('#first-num').value;
       let secondNum = document.querySelector('#second-num').value;
       let operator = document.querySelector('#operator').value;
+
+      try{
+        if(isNaN(firstNum)){
+          throw new FirstEntryError('First entry is not a number');
+        }
+      }catch(err){
+        console.error(err.name + " " + err.message);
+      }finally{
+        console.log("Tried looking at first entry");
+      }
+
+      try{
+        if(isNaN(secondNum)){
+          throw new SyntaxError('Second entry is not a number');
+          //let error = new myError('I Created this');
+          //throw error;
+        }
+      }catch(err){
+        console.error(err.name + " " + err.message);
+      }finally{
+        console.log("Tried looking at second entry")
+      }
+
       output.innerHTML = eval(`${firstNum} ${operator} ${secondNum}`);
     });
+
+    
+    
 
     let errorBtns = Array.from(document.querySelectorAll('#error-btns > button'));
 
     // Start your code here
     // You may move this JS to another file if you wish
+
     errorBtns[0].addEventListener('click', function() {
       console.log("l o g g e d ")
     })
@@ -186,6 +227,10 @@
       notouch = "you touchy";
       
     });
+    TrackJS.track('Testing TrackJS!');
+    window.onerror = function() {
+      console.log("Some error occ");
+    };
   </script>
 </body>
 
